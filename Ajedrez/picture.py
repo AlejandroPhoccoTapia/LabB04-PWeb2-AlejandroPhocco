@@ -15,7 +15,7 @@ class Picture:
     """ Devuelve el espejo vertical de la imagen """
     vertical = []
     vertical = self.img[::-1]
-    return vertical
+    return Picture(vertical)
 
   def horizontalMirror(self):
     """ Devuelve el espejo horizontal de la imagen """
@@ -109,7 +109,19 @@ class Picture:
   def rotate(self):
     """Devuelve una figura rotada en 90 grados, puede ser en sentido horario
     o antihorario"""
-    return Picture(None)
+    newimg = []
+    i = 0
+    while (i < len(self.img[0])):
+      row = ""
+      j = len(self.img) - 1
+      while (j >= 0):
+        aux = self.img[j]
+        row += aux[i]
+        j -= 1
+      newimg.append(row)
+      i += 1
+      
+    return Picture(newimg)
   
   def setBackground(self, p):
     backgroundColor = p.img[0][0]
