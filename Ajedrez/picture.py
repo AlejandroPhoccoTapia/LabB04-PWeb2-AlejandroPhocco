@@ -111,3 +111,19 @@ class Picture:
     """Devuelve una figura rotada en 90 grados, puede ser en sentido horario
     o antihorario"""
     return Picture(None)
+  
+  def setBackground(self, p):
+    backgroundColor = p.img[0][0]
+    newimg = []
+    for r in self.img:
+      x = 0
+      row = ""
+      while x < len(r): 
+        if r[x] == " ":
+          row += backgroundColor
+        else:
+          row += r[x]
+        x += 1
+      newimg.append(row)
+
+    return Picture(newimg)
